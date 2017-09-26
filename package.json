@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-b",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Boot Fidelity Cordova Plugin",
   "homepage": "https://www.bluefidelity.com/",
   "cordova": {
