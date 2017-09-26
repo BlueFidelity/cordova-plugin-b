@@ -64,7 +64,7 @@ public class BootFidelity extends CordovaPlugin {
      * @param data
      * @param context
      */
-    public boolean getCordovaIntent (final JSONArray data, final CallbackContext context) {
+    public boolean getIntent (final JSONArray data, final CallbackContext context) {
         if(data.length() != 0) {
             context.sendPluginResult(new PluginResult(PluginResult.Status.INVALID_ACTION));
             return false;
@@ -82,7 +82,7 @@ public class BootFidelity extends CordovaPlugin {
      * @param context
      * @return
      */
-    public boolean setNewIntentHandler (final JSONArray data, final CallbackContext context) {
+    public boolean setHandleIntent (final JSONArray data, final CallbackContext context) {
         if(data.length() != 1) {
             context.sendPluginResult(new PluginResult(PluginResult.Status.INVALID_ACTION));
             return false;
@@ -225,7 +225,7 @@ public class BootFidelity extends CordovaPlugin {
         }
     }
 
-    public boolean getRealPathFromContentUrl(final JSONArray data, final CallbackContext context) {
+    public boolean getNativePath(final JSONArray data, final CallbackContext context) {
         if(data.length() != 1) {
             context.sendPluginResult(new PluginResult(PluginResult.Status.INVALID_ACTION));
             return false;

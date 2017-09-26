@@ -1,13 +1,13 @@
 var exec = require('cordova/exec');
 
 module.exports = {
-    getCordovaIntent: function (successCallback, errorCallback) {
-        exec(successCallback, errorCallback, 'BootFidelity', 'getCordovaIntent', []);
+    getIntent: function (successCallback, errorCallback) {
+        exec(successCallback, errorCallback, 'BootFidelity', 'getIntent', []);
     },
-    setNewIntentHandler: function (method) {
-        exec(method, null, 'BootFidelity', 'setNewIntentHandler', [method]);
+    setHandleIntent: function (method) {
+        exec(method, null, 'BootFidelity', 'setHandleIntent', [method]);
     },
-    getRealPathFromContentUrl: function (uri, successCallback, errorCallback) {
-        exec(successCallback, errorCallback, 'BootFidelity', 'getRealPathFromContentUrl', [uri]);
+    getNativePath: function (uri, successCallback, errorCallback) {
+        exec(successCallback, errorCallback, 'BootFidelity', 'getNativePath', [uri]);
     }
 };
