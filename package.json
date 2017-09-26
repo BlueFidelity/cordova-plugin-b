@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-b",
-  "version": "1.0.0",
-  "description": "Boot Fidelity Cordova Plugin"
+  "version": "1.0.1",
+  "description": "Boot Fidelity Cordova Plugin",
   "homepage": "https://www.bluefidelity.com/",
   "cordova": {
     "id": "cordova-plugin-b",
@@ -15,6 +15,9 @@
   },
   "keywords": [
     "cordova",
+    "intent",
+    "share",
+    "send",
     "file",
     "ecosystem:cordova",
     "cordova-android"
