@@ -3,7 +3,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-b"
-        version="1.1.1">
+        version="1.1.2">
 
     <name>BootFidelity</name>
     <description>Cordova Plugin for Boot Fidelity</description>
@@ -24,9 +24,6 @@
             <feature name="BootFidelity">
                 <param name="android-package" value="com.bluefidelity.cordova.plugin.bootfidelity.BootFidelity"/>
             </feature>
-        </config-file>
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
 
         <js-module src="www/android/BootFidelity.js" name="BootFidelity">
