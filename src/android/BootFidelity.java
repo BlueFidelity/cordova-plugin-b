@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.Manifest;
 import android.provider.MediaStore;
 import android.database.Cursor;
 import android.content.ClipData;
@@ -20,10 +21,12 @@ import android.net.Uri;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.webkit.MimeTypeMap;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PermissionHelper;
 import org.apache.cordova.PluginResult;
 
 
@@ -31,6 +34,9 @@ public class BootFidelity extends CordovaPlugin {
 
     private final String pluginName = "BootFidelity";
     private CallbackContext onNewIntentCallbackContext = null;
+
+    protected final static String[] permissions = { Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE };
+    public CallbackContext callbackContext;
 
     /**
      * Generic plugin command executor
@@ -248,5 +254,33 @@ public class BootFidelity extends CordovaPlugin {
             context.sendPluginResult(new PluginResult(PluginResult.Status.INVALID_ACTION));
             return false;
         }
+    }
+
+    public boolean getPermission (final JSONArray data, final CallbackContext context) {
+        if(data.length() != 0) {
+            context.sendPluginResult(new PluginResult(PluginResult.Status.INVALID_ACTION));
+            return false;
+        }
+		  
+		  if(!PermissionHelper.hasPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+				this.callbackContext = context;
+				PermissionHelper.requestPermission(this, 0, Manifest.permission.READ_EXTERNAL_STORAGE);
+		  } else {
+				context.sendPluginResult(new PluginResult(PluginResult.Status.OK, "true"));
+		  }
+
+        return true;
+    }
+
+
+    public void onRequestPermissionResult(int requestCode, String[] permissions,
+                                          int[] grantResults) throws JSONException {
+        for (int r : grantResults) {
+            if (r == PackageManager.PERMISSION_DENIED) {
+                this.callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.INVALID_ACTION));
+                return;
+            }
+        }
+        this.callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, "done"));
     }
 }
